@@ -185,3 +185,35 @@ str.split('').map(letters => {
 })
 
 
+// 5
+
+// acecarr TRUE b/c acecarr -> racecar aa aaaa aaab
+// const added (++)
+// month FALSE b/c month != palindrome
+
+// s.length is EVEN then if HM.length = s.length/2
+// s.length is ODD
+// [{a: 2}, {c: 2}, {e: 1}, ...]
+
+// a.value % 2 != 0 return false
+
+function canPalindrome(s) {
+    const map = new HashMap()
+
+    s.split('').map(char => {
+        if(map.get(char) === undefined) {
+            map.set(char, 1)
+        } else {
+            map.delete(char)
+        }
+    })
+    
+    if(s.length % 2 === 0 ) {
+        return map.length === 0
+    } else {
+        return map.length === 1
+    }
+}
+
+console.log(canPalindrome('acecarr'))
+console.log(canPalindrome('month'))
