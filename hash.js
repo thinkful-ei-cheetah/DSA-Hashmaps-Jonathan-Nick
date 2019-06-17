@@ -11,7 +11,8 @@ class HashMap {
   get(key) {
     const index = this._findSlot(key)
     if (this._hashTable[index] === undefined) {
-      throw new Error('Key error')
+      //throw new Error('Key error')
+      return;
     }
     return this._hashTable[index].value
   }
@@ -106,7 +107,7 @@ Lor.set('HalfElven', 'Arwen')
 Lor.set('Ent', 'Treebeard')
 
 console.log(Lor.get('Hobbit'))
-console.log(Lor)
+
 
 // 2. WhatDoesThisDo
 
@@ -166,3 +167,21 @@ WhatDoesThisDo()
     10 % 9 = 1 
 
 */
+
+
+// 4
+
+const str = "google all that you think can think of";
+const Hash = new HashMap();
+let to_return = '';
+str.split('').map(letters => {
+
+       if (Hash.get(letters)===undefined)
+       {
+            to_return += letters;
+            Hash.set(letters, 1);
+       }
+
+})
+
+
