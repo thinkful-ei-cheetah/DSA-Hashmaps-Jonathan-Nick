@@ -217,3 +217,27 @@ function canPalindrome(s) {
 
 console.log(canPalindrome('acecarr'))
 console.log(canPalindrome('month'))
+
+
+function groupAnagrams(s) {
+    const map = new HashMap()
+    let counter=0;
+    result = [];
+    s.map(word => { 
+        let sorted = word.split('').sort().join('');
+        if(map.get(sorted) === undefined) {
+            map.set(sorted, counter);
+            result.push([word]);
+            counter++;
+        } else {       
+           result[map.get(sorted)].push(word);
+        }
+    });
+    return result;
+}
+
+
+
+console.log(groupAnagrams(['east', 'cars', 'acre', 'arcs', 'teas', 'eats', 'race']));
+
+//[['east', 'teas', 'eats'], ['cars', 'arcs'], ['acre', 'race']]
